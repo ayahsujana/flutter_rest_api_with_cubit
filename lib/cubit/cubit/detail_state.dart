@@ -13,7 +13,7 @@ class DetailInitial extends DetailState {}
 class DetailLoading extends DetailState {}
 
 class DetailLoaded extends DetailState {
-  final Videos detail;
+  final List<DetailModel> detail;
   const DetailLoaded({
     required this.detail,
   });

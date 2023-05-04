@@ -2,7 +2,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:tubevideo_cubit/model/video_model.dart';
+import 'package:tubevideo_cubit/model/latest_model.dart';
 import 'package:tubevideo_cubit/repo/api_services.dart';
 
 part 'latest_state.dart';
