@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:tubevideo_cubit/cubit/cubit/detail_cubit.dart';
 import 'package:tubevideo_cubit/cubit/latest_videos/latest_cubit.dart';
 import 'package:http/http.dart' as http;
 import 'package:tubevideo_cubit/repo/api_services.dart';
-import 'package:tubevideo_cubit/ui/latest_page.dart';
+import 'package:tubevideo_cubit/ui/view/latest_page.dart';
+
+import 'cubit/detail_videos/detail_cubit.dart';
 
 void main() {
   runApp(const MyApp());

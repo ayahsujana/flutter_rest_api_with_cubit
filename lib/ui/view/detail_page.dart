@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:tubevideo_cubit/cubit/cubit/detail_cubit.dart';
+
+import '../../cubit/detail_videos/detail_cubit.dart';
 
 class DetailVideoPage extends StatefulWidget {
   const DetailVideoPage({super.key});
