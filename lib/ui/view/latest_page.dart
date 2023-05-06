@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:tubevideo_cubit/cubit/latest_videos/latest_cubit.dart';
 import 'package:tubevideo_cubit/custom/animate_content.dart';
 import 'package:tubevideo_cubit/custom/loading_widget.dart';
 
 import '../custom_view/image_view_video.dart';
-import 'detail_page.dart';
 
 class LatestVideosPage extends StatefulWidget {
   const LatestVideosPage({super.key});
@@ -47,6 +45,7 @@ class _LatestVideosPageState extends State<LatestVideosPage> {
                 itemBuilder: (context, index) {
                   var latest = state.latest[index];
                   return ImageVideoRow(
+                      id: latest.id,
                       videoId: latest.videoId,
                       title: latest.videoTitle,
                       category: latest.categoryName,

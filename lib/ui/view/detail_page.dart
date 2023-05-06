@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+import 'package:pod_player/pod_player.dart';
+import 'package:tubevideo_cubit/ui/custom_view/image_view_detail.dart';
 
 import '../../cubit/detail_videos/detail_cubit.dart';
 
@@ -14,20 +15,27 @@ class DetailVideoPage extends StatefulWidget {
 }
 
 class _DetailVideoPageState extends State<DetailVideoPage> {
-  var logger = Logger();
+  late PodPlayerController _controller;
 
   @override
   void initState() {
-    context.read<DetailCubit>().getDetailVideo(Get.arguments);
     super.initState();
+    context.read<DetailCubit>().getDetailVideo(Get.arguments['id']);
+    _controller = PodPlayerController(
+        playVideoFrom: PlayVideoFrom.youtube(
+            'https://youtu.be/${Get.arguments['videoId']}'))
+      ..initialise();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detail Video'),
-      ),
       body: BlocBuilder<DetailCubit, DetailState>(
         builder: (context, state) {
           if (state is DetailLoading) {
@@ -41,7 +49,16 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
             );
           }
           if (state is DetailLoaded) {
-            return Text(state.detail[0].videoTitle);
+            return SafeArea(
+                child: Column(children: [
+              PodVideoPlayer(
+                controller: _controller,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: Expanded(child: DetailPageView(states: state.detail)),
+              )
+            ]));
           }
           return const Center(
             child: Text('No found data'),
